@@ -196,7 +196,7 @@
                         class="text-gray-300 hover:text-white transition-colors px-4 py-2 text-sm font-medium">Features</a>
                     <a href="#benefits"
                         class="text-gray-300 hover:text-white transition-colors px-4 py-2 text-sm font-medium">Benefits</a>
-                    <a href="/support.html"
+                    <a href="support.html"
                         class="text-gray-300 hover:text-white transition-colors px-4 py-2 text-sm font-medium">Support</a>
                 </div>
                 <div>
@@ -558,8 +558,47 @@
                 <img src="assets/icons/icon.png" alt="PomoKing Logo" class="h-8 w-8 rounded-lg grayscale opacity-70">
                 <span class="font-display font-bold text-gray-400">PomoKing</span>
             </div>
+            <div class="flex gap-6 text-sm text-gray-500">
+                <a href="privacy_policy.html" class="hover:text-primary transition-colors">Privacy Policy</a>
+                <a href="terms_conditions.html" class="hover:text-primary transition-colors">Terms of Service</a>
+                <a href="support.html" class="hover:text-primary transition-colors">Support</a>
+                <a href="mailto:greg.slusarski@gmail.com" class="hover:text-primary transition-colors">Contact</a>
+            </div>
+            <p class="text-sm text-gray-500">© 2026 PomoKing. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Scripts for Interaction -->
+    <script>
+        // Navbar blur and border effect on scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('shadow-lg', 'shadow-black/20');
+            } else {
+                navbar.classList.remove('shadow-lg', 'shadow-black/20');
+            }
+        });
+
+        // Intersection Observer for scroll animations
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal, .reveal-left, .reveal-right");
+
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+
+        window.addEventListener("scroll", reveal);
+        // Trigger once on load
+        setTimeout(reveal, 100);
+    </script>
 </body>
 
 </html>
