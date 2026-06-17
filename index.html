@@ -197,7 +197,7 @@
     <nav class="fixed w-full z-50 glass border-b border-white/5 transition-all duration-300" id="navbar">
         <div class="max-w-5xl mx-auto px-8 sm:px-16 lg:px-24">
             <div class="flex items-center justify-between h-20">
-                <a href="#" onclick="window.scrollTo(0,0); return false;"
+                <a href="#" onclick="history.pushState('', document.title, window.location.pathname + window.location.search); window.scrollTo(0,0); return false;"
                     class="flex items-center gap-3 hover:opacity-80 transition-opacity">
                     <img src="assets/icons/icon.png" alt="PomoKing Logo"
                         class="h-10 w-10 rounded-xl shadow-lg shadow-primary/20">
