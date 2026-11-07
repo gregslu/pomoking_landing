@@ -20,9 +20,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -33,18 +31,17 @@
             theme: {
                 extend: {
                     colors: {
-                        background: '#08110e',
-                        primary: {
-                            DEFAULT: '#10b981', // Emerald 500
-                            hover: '#34d399',   // Emerald 400
-                        },
-                        secondary: '#f59e0b', // Amber 500
-                        surface: 'rgba(255, 255, 255, 0.03)',
-                        surfaceHover: 'rgba(255, 255, 255, 0.08)'
+                        bg: '#060d0a',
+                        primary: { DEFAULT: '#10b981', hover: '#34d399', dark: '#059669' },
+                        secondary: '#f59e0b',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
                         display: ['Outfit', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'hero-glow': 'radial-gradient(ellipse 80% 50% at 50% -20%, rgba(16,185,129,0.18), transparent)',
+                        'cta-glow':  'radial-gradient(ellipse 60% 60% at 50% 50%, rgba(16,185,129,0.12), transparent)',
                     }
                 }
             }
@@ -52,32 +49,37 @@
     </script>
 
     <style>
-        body {
-            background-color: #08110e;
-            color: #ffffff;
-        }
+        html, body { background-color: #060d0a; color: #fff; overflow-x: hidden; }
 
         .text-gradient {
-            background: linear-gradient(to right, #10b981, #34d399, #6ee7b7);
+            background: linear-gradient(135deg, #10b981 0%, #34d399 50%, #6ee7b7 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .glass-card {
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+        .glass {
+            background: linear-gradient(145deg, rgba(255,255,255,0.055) 0%, rgba(255,255,255,0.015) 100%);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.07);
+            box-shadow: 0 8px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08);
+        }
+
+        .nav-glass {
+            background: rgba(6,13,10,0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
         }
     </style>
 </head>
 
 <body class="antialiased font-sans min-h-screen flex flex-col">
 
-    <!-- Header Navigation -->
-    <nav class="w-full border-b border-white/5 bg-background/70 backdrop-blur-md sticky top-0 z-50">
-        <div class="max-w-5xl mx-auto px-8 sm:px-16 lg:px-24">
+    <!-- Navigation -->
+    <nav id="nav" class="nav-glass w-full sticky top-0 z-50 transition-shadow duration-300">
+        <div class="max-w-5xl mx-auto px-6 sm:px-10 lg:px-16">
             <div class="flex items-center justify-between h-20">
                 <a href="./" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
                     <img src="assets/icons/icon.png" alt="PomoKing Logo"
@@ -88,36 +90,33 @@
                     class="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors bg-white/5 hover:bg-white/10 px-4 py-2 rounded-full border border-white/10">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                            d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
                     </svg>
-                    Back to Home
+                    ← Home
                 </a>
             </div>
         </div>
     </nav>
 
-    <!-- Main Content Container -->
-    <main class="flex-grow max-w-3xl mx-auto px-8 sm:px-16 lg:px-24 py-16">
-        <div class="glass-card rounded-3xl p-8 sm:p-12">
+    <!-- Main Content -->
+    <main class="flex-grow max-w-3xl mx-auto px-6 sm:px-10 lg:px-16 py-16 w-full">
+        <div class="glass rounded-3xl p-8 sm:p-12">
             <h1 class="text-4xl sm:text-5xl font-display font-bold text-gradient mb-2">Privacy Policy</h1>
             <p class="text-sm text-gray-500 mb-8">Last updated: May 2026</p>
 
             <div class="prose prose-invert max-w-none text-gray-300 space-y-6">
                 <p>This Privacy Policy describes how <strong class="text-white">Grzegorz Ślusarski</strong> ("we",
-                    "our", or
-                    "us") handles information in relation to the mobile application <strong
-                        class="text-white">PomoKing</strong> ("App").</p>
+                    "our", or "us") handles information in relation to the mobile application
+                    <strong class="text-white">PomoKing</strong> ("App").</p>
 
                 <div>
-                    <h2 class="text-2xl font-display font-bold text-white mt-8 mb-4 border-b border-white/5 pb-2">1.
-                        Overview</h2>
+                    <h2 class="text-2xl font-display font-bold text-white mt-8 mb-4 border-b border-white/5 pb-2">1. Overview</h2>
                     <p class="leading-relaxed">PomoKing is designed with privacy in mind. We do not require user
                         accounts and we do not collect personally identifiable information directly.</p>
                 </div>
 
                 <div>
-                    <h2 class="text-2xl font-display font-bold text-white mt-8 mb-4 border-b border-white/5 pb-2">2.
-                        Data We Do Not Collect</h2>
+                    <h2 class="text-2xl font-display font-bold text-white mt-8 mb-4 border-b border-white/5 pb-2">2. Data We Do Not Collect</h2>
                     <p class="leading-relaxed mb-3">We do not collect or store:</p>
                     <ul class="list-disc pl-6 space-y-2 text-gray-400">
                         <li>Name, email address, or contact details</li>
@@ -128,8 +127,7 @@
                 </div>
 
                 <div>
-                    <h2 class="text-2xl font-display font-bold text-white mt-8 mb-4 border-b border-white/5 pb-2">3.
-                        Data Stored Locally</h2>
+                    <h2 class="text-2xl font-display font-bold text-white mt-8 mb-4 border-b border-white/5 pb-2">3. Data Stored Locally</h2>
                     <p class="leading-relaxed mb-3">The App stores the following data locally on your device:</p>
                     <ul class="list-disc pl-6 space-y-2 text-gray-400">
                         <li>Pomodoro session history</li>
@@ -139,8 +137,7 @@
                 </div>
 
                 <div>
-                    <h2 class="text-2xl font-display font-bold text-white mt-8 mb-4 border-b border-white/5 pb-2">4.
-                        Cloud Backup</h2>
+                    <h2 class="text-2xl font-display font-bold text-white mt-8 mb-4 border-b border-white/5 pb-2">4. Cloud Backup</h2>
                     <p class="leading-relaxed mb-3">On supported platforms, your data may be backed up using:</p>
                     <ul class="list-disc pl-6 space-y-2 text-gray-400">
                         <li>Google Drive (Android)</li>
@@ -151,8 +148,7 @@
                 </div>
 
                 <div>
-                    <h2 class="text-2xl font-display font-bold text-white mt-8 mb-4 border-b border-white/5 pb-2">5.
-                        Third-Party Services</h2>
+                    <h2 class="text-2xl font-display font-bold text-white mt-8 mb-4 border-b border-white/5 pb-2">5. Third-Party Services</h2>
                     <div class="space-y-4">
                         <div>
                             <h3 class="text-lg font-display font-semibold text-white mb-1">a) RevenueCat</h3>
@@ -169,36 +165,31 @@
                 </div>
 
                 <div>
-                    <h2 class="text-2xl font-display font-bold text-white mt-8 mb-4 border-b border-white/5 pb-2">6.
-                        Purchases</h2>
+                    <h2 class="text-2xl font-display font-bold text-white mt-8 mb-4 border-b border-white/5 pb-2">6. Purchases</h2>
                     <p class="leading-relaxed">All payments are processed by Apple App Store or Google Play. We do not
                         store or process payment information.</p>
                 </div>
 
                 <div>
-                    <h2 class="text-2xl font-display font-bold text-white mt-8 mb-4 border-b border-white/5 pb-2">7.
-                        Data Security</h2>
+                    <h2 class="text-2xl font-display font-bold text-white mt-8 mb-4 border-b border-white/5 pb-2">7. Data Security</h2>
                     <p class="leading-relaxed">We take reasonable measures to protect your data. However, no system is
                         completely secure.</p>
                 </div>
 
                 <div>
-                    <h2 class="text-2xl font-display font-bold text-white mt-8 mb-4 border-b border-white/5 pb-2">8.
-                        Data Retention</h2>
+                    <h2 class="text-2xl font-display font-bold text-white mt-8 mb-4 border-b border-white/5 pb-2">8. Data Retention</h2>
                     <p class="leading-relaxed">Since we do not store user data on our servers, data retention is
                         controlled entirely by the user and their device backups.</p>
                 </div>
 
                 <div>
-                    <h2 class="text-2xl font-display font-bold text-white mt-8 mb-4 border-b border-white/5 pb-2">9.
-                        Children's Privacy</h2>
+                    <h2 class="text-2xl font-display font-bold text-white mt-8 mb-4 border-b border-white/5 pb-2">9. Children's Privacy</h2>
                     <p class="leading-relaxed">The App is not directed to children under 13 (or applicable age in your
                         region), and we do not knowingly collect data from children.</p>
                 </div>
 
                 <div>
-                    <h2 class="text-2xl font-display font-bold text-white mt-8 mb-4 border-b border-white/5 pb-2">10.
-                        Your Rights (GDPR / CCPA)</h2>
+                    <h2 class="text-2xl font-display font-bold text-white mt-8 mb-4 border-b border-white/5 pb-2">10. Your Rights (GDPR / CCPA)</h2>
                     <p class="leading-relaxed mb-3">Under the General Data Protection Regulation (GDPR) and the
                         California Consumer Privacy Act (CCPA), users have rights regarding their data. Because we do
                         not store personal data on our own servers, you may exercise these rights by:</p>
@@ -211,15 +202,13 @@
                 </div>
 
                 <div>
-                    <h2 class="text-2xl font-display font-bold text-white mt-8 mb-4 border-b border-white/5 pb-2">11.
-                        Changes to This Policy</h2>
+                    <h2 class="text-2xl font-display font-bold text-white mt-8 mb-4 border-b border-white/5 pb-2">11. Changes to This Policy</h2>
                     <p class="leading-relaxed">We may update this Privacy Policy from time to time. Updates will be
                         reflected by the "Last updated" date.</p>
                 </div>
 
                 <div>
-                    <h2 class="text-2xl font-display font-bold text-white mt-8 mb-4 border-b border-white/5 pb-2">12.
-                        Contact</h2>
+                    <h2 class="text-2xl font-display font-bold text-white mt-8 mb-4 border-b border-white/5 pb-2">12. Contact</h2>
                     <p class="leading-relaxed">If you have questions, contact us at:<br>
                         <a href="mailto:greg.slusarski@gmail.com"
                             class="text-primary hover:text-primary-hover font-semibold transition-colors">greg.slusarski@gmail.com</a>
@@ -230,9 +219,8 @@
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-white/5 bg-background/50 pt-8 pb-8 mt-auto">
-        <div
-            class="max-w-5xl mx-auto px-8 sm:px-16 lg:px-24 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <footer class="border-t border-white/5 pt-8 pb-8 mt-auto" style="background-color:#060d0a;">
+        <div class="max-w-5xl mx-auto px-6 sm:px-10 lg:px-16 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div class="flex items-center gap-3">
                 <img src="assets/icons/icon.png" alt="PomoKing Logo" class="h-6 w-6 rounded-lg grayscale opacity-70">
                 <span class="font-display font-bold text-sm text-gray-500">PomoKing</span>
@@ -241,6 +229,15 @@
         </div>
     </footer>
 
+    <script>
+        const nav = document.getElementById('nav');
+        if (nav) {
+            window.addEventListener('scroll', () => {
+                nav.classList.toggle('shadow-xl', window.scrollY > 20);
+                nav.classList.toggle('shadow-black/30', window.scrollY > 20);
+            });
+        }
+    </script>
 </body>
 
 </html>
